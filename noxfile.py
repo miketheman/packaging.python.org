@@ -6,20 +6,31 @@
 import shutil
 import nox
 
-@nox.session(py="3")
+
+nox.options.sessions = []
+
+
+@nox.session()
 def translation(session):
+    """
+    Build the gettext .pot files.
+    """
     session.install("-r", "requirements.txt")
     target_dir = "locales"
     session.run(
-        "sphinx-build", 
+        "sphinx-build",
         "-b", "gettext",  # build gettext-style message catalogs (.pot file)
         "-d", ".nox/.doctrees/", # path to put the cache
         "source/",  # where the rst files are located
         target_dir, # where to put the .pot file
     )
 
-@nox.session(py="3")
+
+@nox.session()
 def build(session, autobuild=False):
+    """
+    Make the website.
+    """
     session.install("-r", "requirements.txt")
 
     target_build_dir = "build"
@@ -49,20 +60,40 @@ def build(session, autobuild=False):
     )
 
 
-@nox.session(py="3")
+@nox.session()
 def preview(session):
+    """
+    Make and preview the website.
+    """
     session.install("sphinx-autobuild")
     build(session, autobuild=True)
 
 
-@nox.session(py="3")
+@nox.session()
 def linkcheck(session):
+    """
+    Check for broken links.
+    """
     session.install("-r", "requirements.txt")
     session.run(
-        "sphinx-build", 
+        "sphinx-build",
         "-b", "linkcheck", # use linkcheck builder
         "--color",
         "-n", "-W", "--keep-going",  # be strict
         "source", # where the rst files are located
         "build", # where to put the check output
+    )
+
+
+@nox.session()
+def checkqa(session):
+    """
+    Format the guide using pre-commit.
+    """
+    session.install("pre-commit")
+    session.run(
+        "pre-commit",
+        "run",
+        "--all-files",
+        "--show-diff-on-failure",
     )

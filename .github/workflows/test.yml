@@ -1,6 +1,11 @@
 name: Test
 
-on: [push, pull_request]
+on:
+  merge_group:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 6 * * *" # daily at 6am
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}
@@ -9,6 +14,7 @@ concurrency:
 jobs:
   build:
     name: ${{ matrix.noxenv }}
+    if: ${{ github.repository_owner == 'pypa' || github.event_name != 'schedule' }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -17,21 +23,14 @@ jobs:
         - linkcheck
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: 3.9
-
-      - name: pip cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.cache/pip
-          key:
-            ${{ matrix.os }}-${{ matrix.python-version }}-${{ hashFiles('**/requirements.txt') }}-${{ hashFiles('noxfile.py') }}
-          restore-keys: |
-            ${{ matrix.os }}-${{ matrix.python-version }}-
+          cache: 'pip'
+          cache-dependency-path: 'requirements.txt'
 
       - name: Install dependencies
         run: |

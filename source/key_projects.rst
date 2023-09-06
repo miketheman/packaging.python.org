@@ -64,8 +64,8 @@ distlib
 =======
 
 :doc:`Docs <distlib:index>` |
-`Issues <https://bitbucket.org/pypa/distlib/issues?status=new&status=open>`__ |
-`Bitbucket <https://bitbucket.org/pypa/distlib>`__ |
+`Issues <https://github.com/pypa/distlib/issues>`__ |
+`GitHub <https://github.com/pypa/distlib>`__ |
 `PyPI <https://pypi.org/project/distlib>`__
 
 ``distlib`` is a library which implements low-level functions that
@@ -184,7 +184,7 @@ check for CVEs in `Pipfile` using `safety <https://pyup.io/safety>`_.
 
 Pipenv aims to help users manage environments, dependencies, and
 imported packages on the command line. It also works well on Windows
-(which other tools often underserve), makes and checkes file hashes,
+(which other tools often underserve), makes and checks file hashes,
 to ensure compliance with hash-locked dependency specifiers, and eases
 uninstallation of packages and dependencies.
 
@@ -452,6 +452,21 @@ problem of installing scientific software, and making package
 distribution stateless, cached, and branchable. It is used by some
 researchers but has been lacking in maintenance since 2016.
 
+.. _meson-python:
+
+meson-python
+============
+
+`Docs <https://meson-python.readthedocs.io/en/latest/>`__ |
+`GitHub <https://github.com/mesonbuild/meson-python>`__
+
+``meson-python`` is a build backend that uses the Meson_ build system. It enables
+Python package authors to use Meson_ as the build system for their package. It
+supports a wide variety of languages, including C, and is able to fill the needs
+of most complex build configurations.
+
+.. _Meson: https://github.com/mesonbuild/meson
+
 .. _multibuild:
 
 multibuild
@@ -471,9 +486,7 @@ pdm
 `GitHub <https://github.com/pdm-project/pdm/>`__ |
 `PyPI <https://pypi.org/project/pdm>`__
 
-PDM is a modern Python package manager with :pep:`582` support. It installs and
-manages packages in a similar way to ``npm`` that doesn't need to create a
-:term:`virtual environment` at all. It also uses :term:`pyproject.toml` to store
+PDM is a modern Python package manager. It uses :term:`pyproject.toml` to store
 project metadata as defined in :pep:`621`.
 
 .. _pex:
@@ -496,7 +509,8 @@ make deployment of Python applications as simple as ``cp``.
 pip-tools
 =========
 
-`GitHub and Docs <https://github.com/jazzband/pip-tools/>`__ |
+`Docs <https://pip-tools.readthedocs.io/en/latest/>`__ |
+`GitHub <https://github.com/jazzband/pip-tools/>`__ |
 `PyPI <https://pypi.org/project/pip-tools/>`__
 
 pip-tools is a suite of tools meant for Python system administrators
@@ -544,7 +558,6 @@ resolution by locally caching metadata about dependencies.
 pypiserver
 ==========
 
-`Docs <https://github.com/pypiserver/pypiserver/blob/master/README.rst>`__ |
 `GitHub <https://github.com/pypiserver/pypiserver>`__ |
 `PyPI <https://pypi.org/project/pypiserver/>`__
 
