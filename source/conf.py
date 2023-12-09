@@ -104,6 +104,9 @@ linkcheck_ignore = [
     "https://test.pypi.org/project/example-package-YOUR-USERNAME-HERE",
     "https://pypi.org/manage/*",
     "https://test.pypi.org/manage/*",
+    # Temporarily ignored. Ref:
+    # https://github.com/pypa/packaging.python.org/pull/1308#issuecomment-1775347690
+    "https://www.breezy-vcs.org/*",
 ]
 
 # -- Options for extlinks ----------------------------------------------------------
@@ -138,10 +141,10 @@ intersphinx_mapping = {
     "dh-virtualenv": ("https://dh-virtualenv.readthedocs.io/en/latest/", None),
     "distlib": ("https://distlib.readthedocs.io/en/latest/", None),
     "flexx": ("https://flexx.readthedocs.io/en/latest/", None),
+    "flit": ("https://flit.pypa.io/en/stable/", None),
     "nox": ("https://nox.thea.codes/en/latest/", None),
     "openstack": ("https://docs.openstack.org/glance/latest/", None),
     "packaging": ("https://packaging.pypa.io/en/latest/", None),
-    "packaging.python.org": ("https://packaging.python.org/en/latest/", None),
     "pip": ("https://pip.pypa.io/en/latest/", None),
     "pipenv": ("https://pipenv.pypa.io/en/latest/", None),
     "piwheels": ("https://piwheels.readthedocs.io/en/latest/", None),

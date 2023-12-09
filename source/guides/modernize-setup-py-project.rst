@@ -13,7 +13,7 @@ A :term:`pyproject.toml` file is strongly recommended.
 The presence of a :file:`pyproject.toml` file itself does not bring much. [#]_
 What is actually strongly recommended is the ``[build-system]`` table in :file:`pyproject.toml`.
 
-.. [#] Note that it has influence on the build isolation feature of *pip*,
+.. [#] Note that it has influence on the build isolation feature of pip,
     see below.
 
 
@@ -24,10 +24,10 @@ No, :file:`setup.py` can exist in a modern :ref:`setuptools` based project.
 The :term:`setup.py` file is a valid configuration file for setuptools
 that happens to be written in Python.
 However, the following commands are deprecated and **MUST NOT** be run anymore,
-and their recommended replacement commands can be used instead:
+and their recommended replacement commands should be used instead:
 
 +---------------------------------+----------------------------------------+
-| Deprecated                      | Current recommendation                 |
+| Deprecated                      | Recommendation                         |
 +=================================+========================================+
 | ``python setup.py install``     | ``python -m pip install .``            |
 +---------------------------------+----------------------------------------+
@@ -66,7 +66,7 @@ triggers :ref:`pip` to change its default behavior to use *build isolation*.
 For more details:
 
 * :ref:`distributing-packages`
-* :ref:`declaring-build-dependencies`
+* :ref:`pyproject-build-system-table`
 * :doc:`pip:reference/build-system/pyproject-toml`
 
 
@@ -110,7 +110,7 @@ requires a :file:`pyproject.toml` file like this (:file:`setup.py` stays unchang
 
 For more details:
 
-* :ref:`declaring-build-dependencies`
+* :ref:`pyproject-build-system-table`
 
 
 What is the build isolation feature?
@@ -118,7 +118,7 @@ What is the build isolation feature?
 
 Build frontends typically create an ephemeral virtual environment
 where they install only the build dependencies (and their dependencies)
-that are listed under ``build-sytem.requires``
+that are listed under ``build-system.requires``
 and trigger the build in that environment.
 
 For some projects this isolation is unwanted and it can be deactivated as follows:
@@ -161,7 +161,7 @@ can be entirely replaced by a :file:`pyproject.toml` file like this:
     version = "1.2.3"
 
 
-Read :ref:`declaring-project-metadata` for the full specification
+Read :ref:`pyproject-project-table` for the full specification
 of the content allowed in the ``[project]`` table.
 
 
@@ -243,7 +243,6 @@ This file can be as minimalistic as this:
 Where to read more about this?
 ==============================
 
-* :ref:`declaring-build-dependencies`
-* :ref:`declaring-project-metadata`
+* :ref:`pyproject-toml-spec`
 * :doc:`pip:reference/build-system/pyproject-toml`
 * :doc:`setuptools:build_meta`
